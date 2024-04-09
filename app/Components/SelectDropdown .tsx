@@ -13,7 +13,7 @@ const SelectDropdown = ({ label, options, value, onChange, other }: any) => {
         onChange={onChange}
       >
         <option value="">Select {label}</option>
-        {options?.map((option) => (
+        {options?.map((option: any) => (
           <option key={option.id} value={option.id}>
             {option.name}
           </option>
