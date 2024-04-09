@@ -8,7 +8,7 @@ type Props = {};
 
 const InfoSection = (props: Props) => {
   const showRatsInfo = ProfileCardInfo.map((item) => (
-    <div>
+    <div key={item.number}>
       <div className="bg-[#ff961d30] flex items-center gap-2 text-[#FF951D] shadow  rounded-2xl  text-sm font-medium leading-5 px-3">
         <item.icon size={20} />
         <div>

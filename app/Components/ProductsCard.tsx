@@ -12,7 +12,7 @@ const ProductsCard = ({ item }: { item: IProducts }) => {
   const { desc, price, img, remainingTime, readIcon, activeSale } = item;
 
   const remaininghours = remainingTime.map(({ name }) => (
-    <div>
+    <div key={name}>
       <div className="bg-[#ff961d40] text-[#FF951D] shadow w-full rounded-2xl py-1.5 text-sm font-medium leading-5 px-3">
         {name}
       </div>

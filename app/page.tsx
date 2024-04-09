@@ -9,8 +9,8 @@ import ProductsCard from "./Components/ProductsCard";
 import { Reveal, Zoom, Bounce } from "react-awesome-reveal";
 
 export default function Home() {
-  const products = Products.map((item) => (
-    <ProductsCard key={item.price} item={item} />
+  const products = Products.map((item, idx) => (
+    <ProductsCard key={idx} item={item} />
   ));
   return (
     <>
