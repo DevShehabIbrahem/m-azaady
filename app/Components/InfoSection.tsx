@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import pic from "../assets/profile.jpg";
 import { ProfileCardInfo } from "@/data";
-import Button from "./Button";
+import Button from "../../UI/Button";
 
 type Props = {};
 

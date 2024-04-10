@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import SelectDropdown from "./SelectDropdown ";
+import SelectDropdown from "../../UI/SelectDropdown ";
 
 import { useMainCategoryQuery } from "../hooks/useMainCategoryQuery";
 import { useSubCategory } from "../hooks/useSubCategory";

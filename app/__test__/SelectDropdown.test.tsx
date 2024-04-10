@@ -1,7 +1,7 @@
 // SelectDropdown.test.tsx
 import React from "react";
 import { render } from "@testing-library/react";
-import SelectDropdown from "../Components/SelectDropdown ";
+import SelectDropdown from "../../UI/SelectDropdown ";
 
 test("renders the select dropdown with options", () => {
   const options = [

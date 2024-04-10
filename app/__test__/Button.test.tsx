@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Button from "../Components/Button";
+import Button from "../../UI/Button";
 import "@testing-library/jest-dom/jest-globals";
 import "@testing-library/jest-dom";
 

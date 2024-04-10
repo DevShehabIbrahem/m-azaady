@@ -1,9 +1,9 @@
 "use client";
 import { RiAddCircleLine } from "react-icons/ri";
-import Button from "./Components/Button";
+import Button from "../UI/Button";
 import Navbar from "./Components/Navbar";
 import ProfileCard from "./Components/ProfileCard";
-import Tabs from "./Components/Tabs";
+import Tabs from "../UI/Tabs";
 import { Products } from "@/data";
 import ProductsCard from "./Components/ProductsCard";
 import { Reveal, Zoom, Bounce, Fade } from "react-awesome-reveal";
