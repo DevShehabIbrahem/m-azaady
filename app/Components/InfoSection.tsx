@@ -15,7 +15,7 @@ const InfoSection = (props: Props) => {
           <div className="text-black text-[11px] font-semibold">
             {item.number}
           </div>
-          <div className="text-[11px]">{item.name}</div>
+          <div className="text-[9px]">{item.name}</div>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@ const InfoSection = (props: Props) => {
         I am Hala Ahmed, I am the owner of the local brand called Beauty which
         is for Mackeup and Skin Care.
       </p>
-      <div className="mt-6 flex-col lg:flex-row  gap-4 flex justify-center">
+      <div className="mt-6 flex-col xl:flex-row  gap-4 flex justify-center">
         {showRatsInfo}
       </div>
       <Button className="mt-6" width="w-full">

@@ -21,7 +21,7 @@ const ProductsCard = ({ item }: { item: IProducts }) => {
   return (
     <div className="my-10">
       <div className="flex justify-center w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-5 w-full">
+        <div className="flex flex-col md:flex-row items-center gap-5 w-full">
           <div className="relative">
             {" "}
             <Image
@@ -49,7 +49,7 @@ const ProductsCard = ({ item }: { item: IProducts }) => {
               <span className="text-[#828282]"> starting price</span>
               <span className="text-[#333333] font-extrabold">{price}</span>
             </span>
-            <div className="text-[#828282] flex items-center gap-5">
+            <div className="text-[#828282] flex flex-col md:flex-row items-center gap-5">
               {" "}
               <span>Lot starts in </span>
               <div className="flex  gap-5">{remaininghours} </div>
