@@ -20,8 +20,8 @@ const ProductsCard = ({ item }: { item: IProducts }) => {
   ));
   return (
     <div className="my-10">
-      <div className="flex  md:gap-[20rem] w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-5">
+      <div className="flex justify-center w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-5 w-full">
           <div className="relative">
             {" "}
             <Image
