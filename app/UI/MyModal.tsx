@@ -1,8 +1,19 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import Table from "../Components/Table";
+import { IUserSubmit } from "@/types";
 
-export default function MyModal({ userSubmit, isOpen, setIsOpen }) {
+type IsOpenState = boolean;
+// Define a type for the function to update the state value
+type SetIsOpenFunction = React.Dispatch<React.SetStateAction<IsOpenState>>;
+interface IProps {
+  userSubmit: IUserSubmit;
+  isOpen: IsOpenState;
+  setIsOpen: SetIsOpenFunction;
+}
+// Define a type for the state value
+
+export default function MyModal({ userSubmit, isOpen, setIsOpen }: IProps) {
   function closeModal() {
     setIsOpen(false);
   }
