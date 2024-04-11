@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from "react";
 import SelectDropdown from "../UI/SelectDropdown ";
 
-import { usefetchSub } from "@/app/hooks/useFetchSub";
 import useModel from "@/app/hooks/useModel";
 import useGetMainCategory from "@/app/hooks/useGetMainCategory";
 import MyModal from "../UI/MyModal";
 import { IUserSubmit } from "@/types";
+import { useFetchSub } from "../hooks/usefetchSub";
 type Props = {};
 
 const Form = (props: Props) => {
@@ -38,7 +38,7 @@ const Form = (props: Props) => {
     handleDynamicallyChangeprosesSelect,
     handleDynamicallyChangeBrandSelect,
     handleDynamicallyChangeTransmissionTypeSelect,
-  } = usefetchSub(+subCatId);
+  } = useFetchSub(+subCatId);
 
   const { handleDynamicallyChangeModelSelect, typeData } = useModel(
     +brandId,
