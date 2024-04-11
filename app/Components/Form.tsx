@@ -5,7 +5,7 @@ import useModel from "@/app/hooks/useModel";
 import useGetMainCategory from "@/app/hooks/useGetMainCategory";
 import MyModal from "../UI/MyModal";
 import { IUserSubmit } from "@/types";
-import { useFetchSub } from "@/app/hooks/useSub";
+import { useSub } from "@/app/hooks/useSub";
 type Props = {};
 
 const Form = (props: Props) => {
@@ -38,7 +38,7 @@ const Form = (props: Props) => {
     handleDynamicallyChangeprosesSelect,
     handleDynamicallyChangeBrandSelect,
     handleDynamicallyChangeTransmissionTypeSelect,
-  } = useFetchSub(+subCatId);
+  } = useSub(+subCatId);
 
   const { handleDynamicallyChangeModelSelect, typeData } = useModel(
     +brandId,
