@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import SelectDropdown from "../UI/SelectDropdown ";
 
-import { usefetchSub } from "@/app/hooks/usefetchSub";
+import { usefetchSub } from "@/app/hooks/useFetchSub";
 import useModel from "@/app/hooks/useModel";
 import useGetMainCategory from "@/app/hooks/useGetMainCategory";
 import MyModal from "../UI/MyModal";
