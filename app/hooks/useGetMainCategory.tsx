@@ -6,7 +6,7 @@ type IProps = { categoriesId: string };
 type IChildren = { id: number; name: string }[];
 
 type IState = { id: number; name: string; children: IChildren }[];
-const useGetMainCategory = (categoriesId: IUserId) => {
+const useGetMainCategory = (UserId: IUserId) => {
   const [categories, setCategories] = useState<IState>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,7 +19,7 @@ const useGetMainCategory = (categoriesId: IUserId) => {
 
   const handleDynamicallyChangeSecondeSelect = () => {
     const getobjectById = categories.find(
-      (categ) => categ.id === +categoriesId
+      (categ) => categ.id === +UserId?.main_Id!
     );
 
     const createArrayofsubbCategory = getobjectById?.children?.map(
