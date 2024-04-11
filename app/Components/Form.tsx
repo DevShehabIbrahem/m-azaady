@@ -1,7 +1,6 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import SelectDropdown from "../UI/SelectDropdown ";
 
-import axios from "axios";
 import { usefetchSub } from "@/app/hooks/usefetchSub";
 import useModel from "@/app/hooks/useModel";
 import useGetMainCategory from "@/app/hooks/useGetMainCategory";
@@ -16,7 +15,7 @@ const Form = (props: Props) => {
     setIsOpen(true);
   }
   // States
-  const [userSubmit, setUserSubmit] = useState<IUserSubmit | any>({
+  const [userSubmit, setUserSubmit] = useState<IUserSubmit>({
     main_category: "",
     sub_category: "",
     process_type: "",

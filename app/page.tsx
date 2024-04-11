@@ -2,11 +2,11 @@
 import { RiAddCircleLine } from "react-icons/ri";
 import Button from "./UI/Button";
 import Navbar from "./components/Navbar";
-import ProfileCard from "./components/ProfileCard";
 import Tabs from "./UI/Tabs";
 import { Products } from "@/data";
 import ProductsCard from "./components/ProductsCard";
 import { Reveal, Zoom, Bounce, Fade } from "react-awesome-reveal";
+import ProfileCard from "./components/ProfileCard";
 
 export default function Home() {
   const products = Products.map((item, idx) => (

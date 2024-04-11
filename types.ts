@@ -29,11 +29,11 @@ export interface INavbar {
 }
 
 export interface IUserSubmit {
-  main_category: string;
-  sub_category: string;
-  process_type: string;
-  model: string;
-  brand: string;
-  type: string;
-  transmission_type: string;
+  main_category: string | null;
+  sub_category: string | null;
+  process_type: string | null;
+  model: string | null;
+  brand: string | null;
+  type: string | null;
+  transmission_type: string | null;
 }
