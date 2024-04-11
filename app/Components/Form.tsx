@@ -5,7 +5,7 @@ import useModel from "@/app/hooks/useModel";
 import useGetMainCategory from "@/app/hooks/useGetMainCategory";
 import MyModal from "../UI/MyModal";
 import { IUserSubmit } from "@/types";
-import { useFetchSub } from "../hooks/usefetchSub";
+import { useFetchSub } from "../hooks/useFetchSub";
 type Props = {};
 
 const Form = (props: Props) => {
