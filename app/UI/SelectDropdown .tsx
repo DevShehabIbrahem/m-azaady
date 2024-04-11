@@ -1,10 +1,17 @@
 import React from "react";
 
-const SelectDropdown = ({ label, options, value, onChange, other }: any) => {
+const SelectDropdown = ({
+  label,
+  options,
+  value,
+  onChange,
+  other,
+  mandatory,
+}: any) => {
   return (
     <div className="flex flex-col mb-4">
       <label htmlFor="select" className="mb-2 text-sm font-medium">
-        {label}
+        {label} {mandatory && <sup className="text-red-500">*</sup>}
       </label>
       <select
         id="select"
@@ -14,11 +21,11 @@ const SelectDropdown = ({ label, options, value, onChange, other }: any) => {
       >
         <option value="">Select {label}</option>
         {options?.map((option: any) => (
-          <option key={option.id} value={option.id}>
+          <option key={(option.id, option.name)} value={option.id}>
             {option.name}
           </option>
         ))}
-        {other && <option value="other">other</option>}
+        {other && <option value="other">Other</option>}
       </select>
     </div>
   );

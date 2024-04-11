@@ -1,12 +1,14 @@
 "use client";
 
-import Form from "../Components/Form";
+import Form from "../components/Form";
+import MyModal from "../UI/MyModal";
 type Props = {};
 
 const page = (props: Props) => {
   return (
     <>
       <Form />
+      {/* <MyModal /> */}
     </>
   );
 };

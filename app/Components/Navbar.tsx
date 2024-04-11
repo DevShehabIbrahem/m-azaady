@@ -6,7 +6,7 @@ import { NavbarData } from "@/data";
 import { RiAddCircleLine, RiEnglishInput, RiSearch2Line } from "react-icons/ri";
 import { GrLanguage } from "react-icons/gr";
 import { IoNotificationsOutline } from "react-icons/io5";
-import Button from "../../UI/Button";
+import Button from "../UI/Button";
 import { CiMenuBurger } from "react-icons/ci";
 
 type Props = {};

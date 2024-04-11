@@ -1,11 +1,11 @@
 "use client";
 import { RiAddCircleLine } from "react-icons/ri";
-import Button from "../UI/Button";
-import Navbar from "./Components/Navbar";
-import ProfileCard from "./Components/ProfileCard";
-import Tabs from "../UI/Tabs";
+import Button from "./UI/Button";
+import Navbar from "./components/Navbar";
+import ProfileCard from "./components/ProfileCard";
+import Tabs from "./UI/Tabs";
 import { Products } from "@/data";
-import ProductsCard from "./Components/ProductsCard";
+import ProductsCard from "./components/ProductsCard";
 import { Reveal, Zoom, Bounce, Fade } from "react-awesome-reveal";
 
 export default function Home() {

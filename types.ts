@@ -27,3 +27,13 @@ export interface INavbar {
   id: number;
   name: string;
 }
+
+export interface IUserSubmit {
+  main_category: string;
+  sub_category: string;
+  process_type: string;
+  model: string;
+  brand: string;
+  type: string;
+  transmission_type: string;
+}
