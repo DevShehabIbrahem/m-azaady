@@ -1,6 +1,6 @@
 import React from "react";
-import QrSections from "./QrSections";
 import InfoSection from "./InfoSection";
+import QrSections from "./QrSections";
 
 type Props = {};
 
