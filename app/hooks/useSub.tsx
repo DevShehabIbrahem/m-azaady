@@ -1,10 +1,10 @@
-import { IModelData } from "@/types";
+import { IModelData, IUserId } from "@/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 type IProps = { subCatId: number | string };
 
-const useSub = ({ subCatId }: IProps) => {
+const useSub = (userId: IUserId) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState<IModelData | null>(null);
@@ -20,8 +20,8 @@ const useSub = ({ subCatId }: IProps) => {
     );
     return arrayofTypeprosses;
   };
-  // get-Brand
 
+  // get-Brand
   const handleDynamicallyChangeBrandSelect = () => {
     const DynamicBrandtyCategory = data?.data.find(
       (items) => items.slug === "brand"
@@ -45,7 +45,7 @@ const useSub = ({ subCatId }: IProps) => {
   const fetchSubCategories = async () => {
     try {
       const response = await axios.get(
-        `https://staging.mazaady.com/api/v1/properties?cat=${subCatId}`,
+        `https://staging.mazaady.com/api/v1/properties?cat=${userId.sub_Id}`,
         {
           headers: {
             "private-key": process.env.NEXT_PUBLIC_ANALYTICS_ID,
@@ -59,7 +59,7 @@ const useSub = ({ subCatId }: IProps) => {
 
   useEffect(() => {
     fetchSubCategories();
-  }, [subCatId]);
+  }, [userId.sub_Id]);
 
   return {
     data,

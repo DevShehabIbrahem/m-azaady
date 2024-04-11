@@ -4,17 +4,21 @@ import SelectDropdown from "../UI/SelectDropdown ";
 import useModel from "@/app/hooks/useModel";
 import useGetMainCategory from "@/app/hooks/useGetMainCategory";
 import MyModal from "../UI/MyModal";
-import { IUserSubmit } from "@/types";
+import { IUserId, IUserSubmit } from "@/types";
 import { useSub } from "@/app/hooks/useSub";
-type Props = {};
 
 const Form = () => {
   let [isOpen, setIsOpen] = useState(false);
-  function OpenModal(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) {
+  const [processType, setProcessType] = useState("");
+
+  const OpenModal = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
     e.preventDefault();
     setIsOpen(true);
-  }
-  // States
+  };
+
+  // Change state For strings
   const [userSubmit, setUserSubmit] = useState<IUserSubmit>({
     main_category: "",
     sub_category: "",
@@ -24,80 +28,60 @@ const Form = () => {
     type: "",
     transmission_type: "",
   });
-
-  const [categoriesId, setCategoriesId] = useState("");
-  const [subCatId, setSubCatId] = useState("");
-  const [brandId, setBrandId] = useState("");
-  const [modelId, setModelId] = useState<string>("");
-  const [processType, setProcessType] = useState("");
-  const [transmission, setTransmission] = useState("");
-  const [type, setType] = useState("");
+  // Change state For Id
+  const [userId, setUserId] = useState<IUserId>({
+    main_Id: "",
+    sub_Id: "",
+    process_Id: "",
+    model_Id: "",
+    brand_Id: "",
+    type_Id: "",
+    transmission_type_Id: "",
+  });
 
   // Hooks
   const {
     handleDynamicallyChangeprosesSelect,
     handleDynamicallyChangeBrandSelect,
     handleDynamicallyChangeTransmissionTypeSelect,
-  } = useSub({ subCatId: +subCatId });
+  } = useSub(userId);
 
-  const { handleDynamicallyChangeModelSelect, typeData } = useModel({
-    BrandId: +brandId,
-    modelId: +modelId,
-  });
+  const { handleDynamicallyChangeModelSelect, typeData } = useModel(userId);
 
   const { categories, handleDynamicallyChangeSecondeSelect } =
-    useGetMainCategory({ categoriesId: categoriesId });
+    useGetMainCategory(userId);
+  // Hooks
 
-  const hnadleMainCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    const selectedOption = e.target.selectedOptions[0].textContent;
-    setUserSubmit({ ...userSubmit, main_category: selectedOption });
+  /**
+   * Handles changes in the category select element by returning a function that updates the userSubmit and userId states.
+   *
+   * @param {ChangeEvent<HTMLSelectElement>} e - The change event object.
+   * @param {string} name - The name of the field to be updated in the userSubmit state.
+   *
+   * @param {string} Id - The ID of the field to be updated in the userId state.
 
-    if (value) setCategoriesId(value);
-  };
 
-  const handleSubcategoryId = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    const selectedOption = e.target.selectedOptions[0].textContent;
-    setUserSubmit({ ...userSubmit, sub_category: selectedOption });
+   * @returns {Function} - A function that takes the field name and returns another function to update the userSubmit and userId states.
+   */
 
-    setSubCatId(value);
-  };
-  const handletransmissionChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    const selectedOption = e.target.selectedOptions[0].textContent;
-    setUserSubmit({ ...userSubmit, transmission_type: selectedOption });
+  const handleCategoryChanges =
+    (e: ChangeEvent<HTMLSelectElement>) => (name: string) => (Id: string) => {
+      // Id
+      const { value } = e.target;
 
-    setTransmission(value);
-  };
-  const handletypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    const selectedOption = e.target.selectedOptions[0].textContent;
-    setUserSubmit({ ...userSubmit, type: selectedOption });
+      // InnerHTml
+      const selectedOption = e.target.selectedOptions[0].textContent;
 
-    setType(value);
-  };
-  const handleBrandChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    const selectedOption = e.target.selectedOptions[0].textContent;
-    setUserSubmit({ ...userSubmit, brand: selectedOption });
-    setBrandId(value);
-  };
-  const handlemodelChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    const selectedOption = e.target.selectedOptions[0].textContent;
-    setUserSubmit({ ...userSubmit, model: selectedOption });
+      setUserSubmit((prevState) => ({
+        ...prevState,
+        [name]: selectedOption,
+      }));
 
-    setModelId(value);
-  };
-
-  const handleProcessTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    const selectedOption = e.target.selectedOptions[0].textContent;
-    setUserSubmit({ ...userSubmit, process_type: selectedOption });
-
-    setProcessType(value);
-  };
+      setUserId((prevState) => ({
+        ...prevState,
+        [Id]: value,
+      }));
+    };
 
   return (
     <div className="bg-blue-200 min-h-screen flex items-center">
@@ -110,8 +94,10 @@ const Form = () => {
             <div className="mb-5">
               <SelectDropdown
                 options={categories}
-                onChange={hnadleMainCategoryChange}
-                value={categoriesId}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  handleCategoryChanges(e)("main_category")("main_Id")
+                }
+                value={userId.main_Id}
                 label={"Main Category"}
                 mandatory
               />
@@ -120,8 +106,10 @@ const Form = () => {
             <div className="mb-5">
               <SelectDropdown
                 options={handleDynamicallyChangeSecondeSelect()}
-                onChange={handleSubcategoryId}
-                value={subCatId}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  handleCategoryChanges(e)("sub_category")("sub_Id")
+                }
+                value={userId.sub_Id}
                 label={"Sub Category"}
                 mandatory
               />
@@ -129,8 +117,10 @@ const Form = () => {
             <div className="mb-5">
               <SelectDropdown
                 options={handleDynamicallyChangeprosesSelect()}
-                onChange={handleProcessTypeChange}
-                value={processType}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  handleCategoryChanges(e)("process_type")("process_Id")
+                }
+                value={userId.process_Id}
                 label={"Process Type"}
                 other
               />
@@ -148,32 +138,42 @@ const Form = () => {
             <div className="mb-5">
               <SelectDropdown
                 options={handleDynamicallyChangeBrandSelect()}
-                onChange={handleBrandChange}
-                value={brandId}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  handleCategoryChanges(e)("brand")("brand_Id")
+                }
+                value={userId.brand_Id}
                 label={"Brand"}
               />
             </div>
             <div className="mb-5">
               <SelectDropdown
                 options={handleDynamicallyChangeModelSelect()}
-                onChange={handlemodelChange}
-                value={modelId}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  handleCategoryChanges(e)("model")("model_Id")
+                }
+                value={userId.model_Id}
                 label={"Model"}
               />
             </div>
             <div className="mb-5">
               <SelectDropdown
                 options={typeData}
-                onChange={handletypeChange}
-                value={type}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  handleCategoryChanges(e)("type")("type_Id")
+                }
+                value={userId.type_Id}
                 label={"Type"}
               />
             </div>
             <div className="mb-5">
               <SelectDropdown
                 options={handleDynamicallyChangeTransmissionTypeSelect()}
-                onChange={handletransmissionChange}
-                value={transmission}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  handleCategoryChanges(e)("transmission_type")(
+                    "transmission_type_Id"
+                  )
+                }
+                value={userId.transmission_type_Id}
                 label={"Transmission Type"}
               />
             </div>

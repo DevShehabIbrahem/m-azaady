@@ -1,3 +1,4 @@
+import { IUserId } from "@/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -5,14 +6,20 @@ type IProps = { categoriesId: string };
 type IChildren = { id: number; name: string }[];
 
 type IState = { id: number; name: string; children: IChildren }[];
-const useGetMainCategory = (categoriesId: IProps) => {
+const useGetMainCategory = (categoriesId: IUserId) => {
   const [categories, setCategories] = useState<IState>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  /**
+   * handleDynamicallyChangeSecondeSelect for SubCategory
+   * Returns an array of subcategories based on the selected category ID.
+   *
+   * @returns {(string | undefined)[]} - An array of subcategories, or undefined if the category is not found or has no children.
+   */
 
   const handleDynamicallyChangeSecondeSelect = () => {
     const getobjectById = categories.find(
-      (categ) => categ.id === +categoriesId.categoriesId
+      (categ) => categ.id === +categoriesId
     );
 
     const createArrayofsubbCategory = getobjectById?.children?.map(
