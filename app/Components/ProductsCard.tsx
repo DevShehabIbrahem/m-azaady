@@ -6,8 +6,6 @@ import redheart from "../assets/icons8-heart-16.png";
 import sale from "../assets/sale.png";
 import active from "../assets/active.png";
 
-type Props = {};
-
 const ProductsCard = ({ item }: { item: IProducts }) => {
   const { desc, price, img, remainingTime, readIcon, activeSale } = item;
 

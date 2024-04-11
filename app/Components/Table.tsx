@@ -1,8 +1,11 @@
+import { IUserSubmit } from "@/types";
 import React from "react";
 
-type Props = {};
+interface Props {
+  userSubmit: IUserSubmit;
+}
 
-const Table = ({ userSubmit }) => {
+const Table = ({ userSubmit }: Props) => {
   return (
     <table className="min-w-full leading-normal">
       <thead>

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import SelectDropdown from "../UI/SelectDropdown ";
 
 import useModel from "@/app/hooks/useModel";
@@ -8,9 +8,9 @@ import { IUserSubmit } from "@/types";
 import { useSub } from "@/app/hooks/useSub";
 type Props = {};
 
-const Form = (props: Props) => {
+const Form = () => {
   let [isOpen, setIsOpen] = useState(false);
-  function OpenModal(e) {
+  function OpenModal(e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) {
     e.preventDefault();
     setIsOpen(true);
   }
@@ -28,7 +28,7 @@ const Form = (props: Props) => {
   const [categoriesId, setCategoriesId] = useState("");
   const [subCatId, setSubCatId] = useState("");
   const [brandId, setBrandId] = useState("");
-  const [Model, setModelId] = useState("");
+  const [modelId, setModelId] = useState<string>("");
   const [processType, setProcessType] = useState("");
   const [transmission, setTransmission] = useState("");
   const [type, setType] = useState("");
@@ -38,15 +38,15 @@ const Form = (props: Props) => {
     handleDynamicallyChangeprosesSelect,
     handleDynamicallyChangeBrandSelect,
     handleDynamicallyChangeTransmissionTypeSelect,
-  } = useSub(+subCatId);
+  } = useSub({ subCatId: +subCatId });
 
-  const { handleDynamicallyChangeModelSelect, typeData } = useModel(
-    +brandId,
-    +Model
-  );
+  const { handleDynamicallyChangeModelSelect, typeData } = useModel({
+    BrandId: +brandId,
+    modelId: +modelId,
+  });
 
   const { categories, handleDynamicallyChangeSecondeSelect } =
-    useGetMainCategory(categoriesId);
+    useGetMainCategory({ categoriesId: categoriesId });
 
   const hnadleMainCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
@@ -157,7 +157,7 @@ const Form = (props: Props) => {
               <SelectDropdown
                 options={handleDynamicallyChangeModelSelect()}
                 onChange={handlemodelChange}
-                value={Model}
+                value={modelId}
                 label={"Model"}
               />
             </div>

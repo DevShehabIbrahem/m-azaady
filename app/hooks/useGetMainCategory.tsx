@@ -1,16 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-type Props = {};
+type IProps = { categoriesId: string };
+type IChildren = { id: number; name: string }[];
 
-const useGetMainCategory = (categoriesId) => {
-  const [categories, setCategories] = useState([]);
+type IState = { id: number; name: string; children: IChildren }[];
+const useGetMainCategory = (categoriesId: IProps) => {
+  const [categories, setCategories] = useState<IState>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const handleDynamicallyChangeSecondeSelect = () => {
     const getobjectById = categories.find(
-      (categ) => categ.id === +categoriesId
+      (categ) => categ.id === +categoriesId.categoriesId
     );
 
     const createArrayofsubbCategory = getobjectById?.children?.map(
@@ -33,7 +35,6 @@ const useGetMainCategory = (categoriesId) => {
       setCategories(response.data.data.categories);
       setLoading(false);
     } catch (error) {
-      setError(error);
       setLoading(false);
     }
   };

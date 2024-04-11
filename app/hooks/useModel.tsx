@@ -1,10 +1,9 @@
+import { IModelData, IProps } from "@/types";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-type Props = {};
-
-const useModel = (BrandId, modelId) => {
-  const [modelData, setModelData] = useState(null);
+const useModel = ({ BrandId, modelId }: IProps) => {
+  const [modelData, setModelData] = useState<IModelData | null>(null);
   const [typeData, setTypeData] = useState(null);
 
   const handleDynamicallyChangeModelSelect = () => {

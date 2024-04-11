@@ -37,3 +37,17 @@ export interface IUserSubmit {
   type: string | null;
   transmission_type: string | null;
 }
+export interface IProps {
+  BrandId: number;
+  modelId?: number;
+}
+export interface IOptions {
+  id: number;
+  name: string;
+}
+
+export interface IModelData {
+  code: number;
+  data: { id: number; name: string; slug?: string; options: IOptions[] }[];
+  msg: string;
+}

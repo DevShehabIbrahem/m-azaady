@@ -1,12 +1,14 @@
+import { IModelData } from "@/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-type Props = {};
+type IProps = { subCatId: number | string };
 
-const useSub = (subCatId) => {
+const useSub = ({ subCatId }: IProps) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<IModelData | null>(null);
+
   // get-typeprosses
   const handleDynamicallyChangeprosesSelect = () => {
     const DynamicBrandtyCategory = data?.data.find(

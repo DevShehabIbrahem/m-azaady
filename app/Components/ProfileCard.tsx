@@ -2,9 +2,7 @@ import React from "react";
 import InfoSection from "./InfoSection";
 import QrSections from "./QrSections";
 
-type Props = {};
-
-const ProfileCard = (props: Props) => {
+const ProfileCard = () => {
   return (
     <div className="bg-white shadow rounded-lg p-6">
       <InfoSection />

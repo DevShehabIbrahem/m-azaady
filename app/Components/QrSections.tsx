@@ -5,9 +5,7 @@ import QR from "../assets/QR.jpg";
 import { HiOutlineDocumentDownload } from "react-icons/hi";
 import { IoEyeOutline, IoShareSocialOutline } from "react-icons/io5";
 
-type Props = {};
-
-const QrSections = (props: Props) => {
+const QrSections = () => {
   return (
     <div className="flex flex-col">
       <div className="flex items-baseline justify-between gap-4">
