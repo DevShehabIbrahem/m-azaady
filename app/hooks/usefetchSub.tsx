@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 type Props = {};
 
-const usefetchSub = (subCatId) => {
+const useFetchSub = (subCatId) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
@@ -67,4 +67,4 @@ const usefetchSub = (subCatId) => {
   };
 };
 
-export { usefetchSub };
+export { useFetchSub };
