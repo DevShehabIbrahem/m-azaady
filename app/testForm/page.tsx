@@ -2,7 +2,7 @@
 
 import useGetMainCategory from "@/app/hooks/useGetMainCategory";
 import useModel from "@/app/hooks/useModel";
-import { usefetchSub } from "@/app/hooks/useFetchSub";
+import { usefetchSub } from "@/app/hooks/useSub";
 import axios from "axios";
 import { headers } from "next/headers";
 import React, { useEffect, useState } from "react";
